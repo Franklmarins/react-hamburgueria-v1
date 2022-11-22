@@ -1,13 +1,13 @@
 import React from "react";
 import { Logo } from "./Logo";
-import { InputSearch } from "./InputSearch";
+import { Form } from "./Form";
 
-export const Header = () => {
+export const Header = ({ showProducts }) => {
   return (
     <header>
       <div>
         <Logo />
-        <InputSearch />
+        <Form showProducts={showProducts} />
       </div>
     </header>
   );
