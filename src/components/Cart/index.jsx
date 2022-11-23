@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { StyledCart } from "../../styles/cart";
 import { CartProduct } from "./CartProduct";
 import { CartTotal } from "./CartTotal";
 
@@ -22,8 +23,8 @@ export const Cart = ({
   }
 
   return (
-    <div>
-      <div>
+    <StyledCart>
+      <div className="cart-title">
         <h3>Carrinho de compras</h3>
       </div>
       {currentSale ? (
@@ -44,11 +45,11 @@ export const Cart = ({
           />
         </>
       ) : (
-        <div>
+        <div className="cart-no-item">
           <h3>Sua sacola está vazia</h3>
           <p>Adicione itens</p>
         </div>
       )}
-    </div>
+    </StyledCart>
   );
 };

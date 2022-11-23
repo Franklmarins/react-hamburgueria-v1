@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { StyledForm } from "../../../styles/form";
 import { Button } from "./Button";
 import { InputSearch } from "./InputSearch";
 
@@ -10,7 +11,7 @@ export const Form = ({ showProducts }) => {
   }, [valueInput]);
 
   return (
-    <form
+    <StyledForm
       onSubmit={(event) => {
         event.preventDefault();
         setValueInput(valueInput);
@@ -18,6 +19,6 @@ export const Form = ({ showProducts }) => {
     >
       <InputSearch setValueInput={setValueInput} />
       <Button />
-    </form>
+    </StyledForm>
   );
 };

@@ -1,8 +1,9 @@
 import React from "react";
+import { StyledInput } from "../../../../styles/input";
 
 export const InputSearch = ({ setValueInput }) => {
   return (
-    <input
+    <StyledInput
       type="search"
       placeholder="Digitar Pesquisa"
       onChange={(event) => {

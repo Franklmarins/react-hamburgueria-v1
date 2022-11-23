@@ -1,22 +1,27 @@
 import React from "react";
+import { StyledCartProduct } from "../../../styles/cartProduct";
 
 export const CartProduct = ({ product, removeProduct }) => {
   return (
-    <li>
+    <StyledCartProduct>
       <div>
         <img src={product.img} alt={product.name} />
       </div>
       <div>
-        <h4>{product.name}</h4>
-        <button
-          onClick={() => {
-            removeProduct(product.id);
-          }}
-        >
-          Remover
-        </button>
+        <h3>
+          {product.name.length > 9
+            ? product.name.substr(0, 9) + "..."
+            : product.name}
+        </h3>
+        <span>{product.category}</span>
       </div>
-      <span>{product.category}</span>
-    </li>
+      <button
+        onClick={() => {
+          removeProduct(product.id);
+        }}
+      >
+        Remover
+      </button>
+    </StyledCartProduct>
   );
 };

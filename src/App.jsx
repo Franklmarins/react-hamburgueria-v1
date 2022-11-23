@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
 import { Header } from "./components/Header";
 import { ProductList } from "./components/ProductList";
 import { GlobalStyle } from "./styles/global";
 import { Cart } from "./components/Cart";
+import { Container } from "./styles/container";
+import { ResultInfo } from "./components/ResultInfo";
+import { api } from "./services/api";
 
 export const App = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState(null);
   const [cartTotal, setCartTotal] = useState(0);
+  const [value, setValue] = useState("");
 
   useEffect(() => {
-    fetch(`https://hamburgueria-kenzie-json-serve.herokuapp.com/products`)
-      .then((prod) => prod.json())
-      .then((json) => setProducts(json))
-      .catch((err) => console.log(err));
+    async function getList() {
+      try {
+        const response = await api.get();
+
+        setProducts(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getList();
   }, []);
 
+  useEffect(() => {
+    setFilteredProducts(products);
+  }, [products]);
+
   const showProducts = (value) => {
-    if (value === "") {
-      setFilteredProducts(products);
-    }
+    setValue(value);
     setFilteredProducts(
       products.filter(
         (product) =>
@@ -43,7 +54,8 @@ export const App = () => {
     <div className="App">
       <GlobalStyle />
       <Header showProducts={showProducts} />
-      <div>
+      <Container>
+        <ResultInfo value={value} />
         <ProductList
           filteredProducts={filteredProducts}
           handleClick={handleClick}
@@ -54,7 +66,7 @@ export const App = () => {
           cartTotal={cartTotal}
           setCartTotal={setCartTotal}
         />
-      </div>
+      </Container>
     </div>
   );
 };

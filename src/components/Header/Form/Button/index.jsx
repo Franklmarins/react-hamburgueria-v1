@@ -1,5 +1,10 @@
 import React from "react";
+import { StyledButtonMedium } from "../../../../styles/button";
 
 export const Button = () => {
-  return <button>Pesquisar</button>;
+  return (
+    <StyledButtonMedium bgColor="--color-primary" textColor="--grey-0">
+      Pesquisar
+    </StyledButtonMedium>
+  );
 };
