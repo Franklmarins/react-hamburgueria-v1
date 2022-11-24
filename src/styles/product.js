@@ -8,6 +8,9 @@ export const StyledLi = styled.li`
   height: 346px;
   border: 2px solid var(--grey-20);
   border-radius: 5px;
+  &:hover {
+    border: 2px solid var(--grey-100);
+  }
 
   div:nth-child(1) {
     background: var(--grey-0);

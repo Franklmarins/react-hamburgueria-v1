@@ -8,26 +8,27 @@ export const Cart = ({
   setCurrentSale,
   cartTotal,
   setCartTotal,
+  notification,
 }) => {
   const removeProduct = (id) => {
     const newList = currentSale.filter((product) => id != product.id);
 
-    newList.length > 0 ? setCurrentSale(newList) : setCurrentSale(null);
+    newList.length > 0
+      ? setCurrentSale(newList) || notification("remove")
+      : setCurrentSale([]) || notification("remove");
   };
 
-  if (currentSale) {
-    useEffect(() => {
-      const value = currentSale.reduce((pre, cur) => pre + cur.price, 0);
-      setCartTotal(value);
-    }, [currentSale]);
-  }
+  useEffect(() => {
+    const value = currentSale.reduce((pre, cur) => pre + cur.price, 0);
+    setCartTotal(value);
+  }, [currentSale]);
 
   return (
     <StyledCart>
       <div className="cart-title">
         <h3>Carrinho de compras</h3>
       </div>
-      {currentSale ? (
+      {currentSale.length > 0 ? (
         <>
           <ul>
             {currentSale.map((product) => (

@@ -19,7 +19,7 @@ export const CartTotal = ({ cartTotal, setCurrentSale }) => {
         bgColor="--grey-20"
         textColor="--grey-50"
         onClick={() => {
-          setCurrentSale(null);
+          setCurrentSale([]);
         }}
       >
         Remover todos

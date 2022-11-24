@@ -4,6 +4,9 @@ export const StyledCart = styled.div`
   margin-top: 20px;
   border-radius: 5px;
   background: var(--grey-0);
+  width: 30%;
+  height: fit-content;
+  margin-top: 30px;
 
   .cart-title {
     padding: 18px 20px;
@@ -32,5 +35,9 @@ export const StyledCart = styled.div`
       font-weight: var(--font-weight-3);
       color: var(--grey-50);
     }
+  }
+  @media (max-width: 1169px) {
+    width: 100%;
+    margin-top: 0;
   }
 `;
