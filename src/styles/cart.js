@@ -20,6 +20,8 @@ export const StyledCart = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow: auto;
+    max-height: 365px;
   }
   .cart-no-item {
     padding: 50px 10px;
